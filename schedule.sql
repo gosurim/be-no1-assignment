@@ -7,3 +7,16 @@ CREATE TABLE plan
     modi    VARCHAR(100) NOT NULL COMMENT '수정일',
     todo TEXT COMMENT '할일'
 );
+
+CREATE TABLE users
+(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    crDate DATETIME,
+    mdDate DATETIME
+);
+
+ALTER TABLE plan
+ADD COLUMN userId BIGINT,
+ADD CONSTRAINT fk_user_plan FOREIGN KEY (userId) REFERENCES users(id);
